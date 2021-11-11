@@ -1,0 +1,8 @@
+.bg-btn {
+  background-color: rgba(209, 250, 229, var(--tw-bg-opacity));
+  border-radius: 6px;
+}
+
+.bg-nav {
+  background-color: rgba(75, 85, 99, var(--tw-bg-opacity));
+}
