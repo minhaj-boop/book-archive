@@ -1,12 +1,12 @@
-//retreive cards and searcg counter ids
+//retreive cards and search counter ids and searchfield text
 const searchedBooks = document.getElementById('books-cards');
 const searchCount = document.getElementById('search-count');
+const searchResult = document.getElementById('search-field');
 
 //handle search button click
 document.getElementById('search-btn').addEventListener('click', async () => {
-    const searchResult = document.getElementById('search-field');
     const searchText = searchResult.value;
-    
+    clearAll();
     //show error message if the search field is empty
     if(searchText === '') {
         searchCount.textContent = '';
@@ -22,8 +22,8 @@ document.getElementById('search-btn').addEventListener('click', async () => {
         const res = await fetch(url);
         const data = await res.json();
         console.log(data);
-        displayBookDetails(data.docs);
         displaySearchCount(data);
+        displayBookDetails(data.docs);
     }
 
 });
@@ -46,10 +46,9 @@ const displayBookDetails = books => {
         toggleAlert1('block');
         toggleSpinner('none');
     }
-    //if arry of books are returned then show them in cards 
+    //if array of books are returned then show them in cards 
     else {
-        searchCount.textContent = '';
-        searchedBooks.textContent = ''
+        searchedBooks.textContent = '';
         toggleAlert1('none');
         toggleAlert2('none');
         toggleSpinner('none');
@@ -84,4 +83,12 @@ const toggleAlert2 = alert => {
 //display/hide spinner
 const toggleSpinner = spinner => {
     document.getElementById('spinner').style.display = spinner; 
+}
+//clear all
+const clearAll = () => {
+    searchCount.textContent = '';
+    searchedBooks.textContent = '';
+    searchResult.value = '';
+    toggleAlert1('none');
+    toggleAlert2('none');
 }
