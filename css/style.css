@@ -6,3 +6,7 @@
 .bg-nav {
   background-color: rgba(75, 85, 99, var(--tw-bg-opacity));
 }
+
+.hide-alert {
+  display: none;
+}
